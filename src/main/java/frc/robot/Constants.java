@@ -5,6 +5,7 @@
 package frc.robot;
 
 import static frc.robot.util.Keyboard.Keys.*;
+import static java.awt.event.KeyEvent.*;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -17,7 +18,8 @@ import static frc.robot.util.Keyboard.Keys.*;
 public final class Constants {
     public static final class Keyboard {
 
-        public static final int KEY_AMOUNT = Z_;
+        public static final int FIRST_KEY_OFFSET = VK_BACK_SPACE;
+        public static final int KEY_AMOUNT = QU_;
 
     }
 
