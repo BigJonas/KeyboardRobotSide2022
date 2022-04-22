@@ -17,10 +17,27 @@ import static java.awt.event.KeyEvent.*;
  */
 public final class Constants {
     public static final class Keyboard {
+        public static final int FIRST_KEY_OFFSET = VK_0; // Definitly change these numbers if you want to not 
+        public static final int KEY_AMOUNT = Z_;         // overload the FMS
 
-        public static final int FIRST_KEY_OFFSET = VK_BACK_SPACE;
-        public static final int KEY_AMOUNT = QU_;
+    }
 
+    public static final class Mouse {
+        /**
+         * X Position
+         * Y Position
+         * Mouse Button 1
+         * Mouse Button 2
+         * Mouse Button 3
+         * Scroll wheel
+         */
+        public static final int KEY_AMOUNT = 8;
+
+        public static final int AREA_WIDTH = 1280; // This is the size of the window in the program
+        public static final int AREA_LENGTH = 720; // I made the window unresizeable so you have to re-compile it on your own to change the size
+
+        public static final double VEL_X_DEADBAND = 0.2;
+        public static final double VEL_Y_DEADBAND = 0.2;
     }
 
 }

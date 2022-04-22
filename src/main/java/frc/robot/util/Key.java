@@ -5,24 +5,34 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class Key extends Trigger{
-    
-    private final Keyboard board;
-    private final int id;
+    private boolean isPressed;
 
-    public boolean isPressed;
-
-    public Key(Keyboard board, int id) {
-
-        this.board = board;
-        this.id = id;
-
+    public Key() {
         isPressed = false;
 
     }
 
+    /**
+     * Gets the {@link #isPressed} value
+     */
     public boolean get() {
+        return isPressed;
 
-        return board.getKeyPressed(id);
+    }
+
+    /**
+     * Sets the {@link #isPressed} variable to true
+     */
+    public void press() {
+        isPressed = true;
+
+    }
+
+    /**
+     * Sets the {@link #isPressed} variable to false
+     */
+    public void release() {
+        isPressed = false;
 
     }
 
@@ -74,8 +84,8 @@ public class Key extends Trigger{
      * @return this key, so calls can be chained
      */
     public Key whileHeld(final Command command, boolean interruptible) {
-    whileActiveContinuous(command, interruptible);
-    return this;
+        whileActiveContinuous(command, interruptible);
+        return this;
     }
 
     /**

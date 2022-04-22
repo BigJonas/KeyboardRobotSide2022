@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.util.Keyboard;
+import frc.robot.util.Mouse;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import static frc.robot.util.Keyboard.Keys.*;
+import static frc.robot.util.Mouse.Button.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,9 +22,9 @@ import static frc.robot.util.Keyboard.Keys.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  static Keyboard board = Keyboard.getInstance();
+  static Mouse mouse = Mouse.getInstance();
 
-  // Board does not need port number, this also means it cannot differentiate between different keyboards
-  private final Keyboard board = new Keyboard();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -40,18 +42,28 @@ public class RobotContainer {
 
     // You have to refer to the keys from the board since the keys are declared in the Keyboard class
     // It is pretty much the same as using a Joystick button
-    board.keys[A_].whenPressed(
+    board.getKey(A_).whenPressed(
       () -> {
-
-        SmartDashboard.putBoolean("Keyboard: A", board.keys[A_].get());
+        SmartDashboard.putBoolean("Keyboard: A", board.getKey(A_).get());
 
       }
     )
     .whenReleased(
       () -> {
+        SmartDashboard.putBoolean("Keyboard: A", board.getKey(A_).get());
 
-        SmartDashboard.putBoolean("Keyboard: A", board.keys[A_].get());
+      }
+    );
 
+    mouse.getKey(L1_).whenPressed(
+      () -> {
+        SmartDashboard.putBoolean("Mouse: Left 1", mouse.getKey(L1_).get());
+
+      }
+    ).whenReleased(
+      () -> {
+        SmartDashboard.putBoolean("Mouse: Left 1", mouse.getKey(L1_).get());
+        
       }
     );
 
